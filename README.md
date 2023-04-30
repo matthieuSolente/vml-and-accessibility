@@ -11,7 +11,9 @@ Some accessibility tests on VML components
     <v:arc/>
     <v:arc/>
     <v:oval>
-      <center><h1></h1>
+      <center>
+        <h1></h1>
+       </center>
   </v:group>
 <![endif]-->
 ```
