@@ -3,7 +3,7 @@ Some accessibility tests on VML components
 
 
 ## VML component :  v:oval
-### VML component :  v:oval without Alt
+### VML component :  v:oval without Alt :x:
 
 ```
 <!--[if mso]>
@@ -31,7 +31,7 @@ As a result, it produces an image, like this :
 
 Without an Alt attribute on the VML component, the image displayed in the Inbox contains no information. If there is text inside the component, it is not read by screen readers
 
-### VML component :  v:oval with Alt
+### VML component :  v:oval with Alt :heavy_check_mark:
 
 ```
 <!--[if mso]>
@@ -51,7 +51,7 @@ Without an Alt attribute on the VML component, the image displayed in the Inbox 
 By adding an Alt attribute on the VML component, Outlook keeps that Alt in code, and it also carries it over to the image it creates for display. The screen reader reads the information.
 
 ## VML component :  v:roundrect
-### VML component :  v:roundrect without Alt
+### VML component :  v:roundrect without Alt :x:
 
 Here we reproduce a rounded HTML image, in its VML version. So there are two versions of the same image, one for Outlook, and one for the rest
 
@@ -65,7 +65,7 @@ Here we reproduce a rounded HTML image, in its VML version. So there are two ver
 
 Without Alt attribute added to the v:fill element, the screen reader does not read any information
 
-### VML component :  v:roundrect with Alt
+### VML component :  v:roundrect with Alt :x:
 
 We reproduce the same thing, but add an Alt attribute on the v:fill element
 
@@ -97,7 +97,7 @@ Apart from conditional comments, Outlook creates an img tag with a v:shape attri
 So in a case where you have two versions of the same image, the HTML version will be well recognized by screen readers for all other mail clients, but on Outlook, the screen reader will not read any information about the image
 
 ## VML component :  v:shape
-### VML component :  v:shape without Alt
+### VML component :  v:shape without Alt :x:
 
 Here we use the VML shape element to give a particular shape to an image for example.
 
@@ -111,7 +111,7 @@ Here we use the VML shape element to give a particular shape to an image for exa
 
 If you insert an image into a shape element without Alt, the screen reader does not read anything or passes over it saying "empty"
 
-### VML component :  v:shape with Alt
+### VML component :  v:shape with Alt :x:
 
 We reproduce the same thing, but add an Alt attribute on the v:fill element
 
@@ -145,7 +145,7 @@ Apart from conditional comments, Outlook creates an img tag with a v:shape attri
 Again, on Outlook, the screen reader will not read anything
 
 ## VML component :  v:roundrect
-### VML component :  v:roundrect without Alt
+### VML component :  v:roundrect without Alt :x:
 
 Here we use the VML around an image to force the rounded shape on Outlook
 
@@ -163,7 +163,7 @@ Here we use the VML around an image to force the rounded shape on Outlook
 
 Even if we add an Alt attribute in the HTML part, in Outlook code, this attribute is not found anywhere, it is purely erased. The screen reader therefore passes over the image but does not read any information, or simply says "empty". So the Alt in the html part will be read by all mail clients, but on Outlook, the screen reader will not read anything
 
-### VML component :  v:roundrect with Alt
+### VML component :  v:roundrect with Alt :heavy_check_mark:
 
 Same thing here, but we add an Alt Attribute to the VML.
 
@@ -194,9 +194,9 @@ The Alt on the VML v:roundrect element is kept, and is repeated on the html img 
 So on Outlook the Alt here will be well read by the screen reader.
 
 ## VML component :  v:rect
-### VML component :  v:rect without Alt
+### VML component :  v:rect without Alt :heavy_check_mark:
 
-Here we surround content in a VML v:rect block. It is often the bus to create what is called an absolute positioning or "false absolute"
+Here we surround content in a VML v:rect block. It is often used to create what is called an absolute positioning or "faux absolute"
 
 ```
 <!--[if mso]>
@@ -219,7 +219,7 @@ Here we surround content in a VML v:rect block. It is often the bus to create wh
 <![endif]-->
 ```
 
-As usual Outlook keeps all the VML code in its own conditional comment. But in the image it creates, it automatically takes all the text content and inserts it as an Alt attribute.
+As usual Outlook keeps all the VML code in its own conditional comment. But in the image it creates, it automatically takes all the text content and inserts it as an Alt attribute, even if you have very long content.
 
 ```
 <!--[if gte vml 1]>
@@ -232,7 +232,7 @@ As usual Outlook keeps all the VML code in its own conditional comment. But in t
 On Narrator or NVDA, when you let the screen reader read the email, he reads the information as a simple text, without distinguishing the title from the rest. But if you go up or down to the text using the up or down arrow, it distinguishes the title well, saying "level title...". When navigating with the tab key, the whole element is ignored.
 
 
-### VML component :  v:rect with Alt
+### VML component :  v:rect with Alt :heavy_check_mark:
 
 
 ```
@@ -268,3 +268,5 @@ Outlook keeps the vml and adds a bunch of extra code to it. It then displays an 
 ```
 
 The result here is the same: On Narrator or NVDA, when you let the screen reader read the email, he reads the information as a simple text, without distinguishing the title from the rest. But if you go up or down to the text using the up or down arrow, it distinguishes the title well, saying "level title...". When navigating with the tab key, the whole element is ignored.
+
+In all cases, content inserted between v:rect tags is well recognized and read by the screen reader, with or without Alt attribute.
